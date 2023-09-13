@@ -35,4 +35,15 @@ class AuthenticationService {
 
     }
 
+    static async registerDealer(dealer){
+        try{
+            const response = await axios.post('http://localhost:8085/ims/api/register',dealer);
+            return response.data;
+        }
+        catch(error){
+            console.error('Registration Error : ',error);
+        }
+    }
+
 }
+export default AuthenticationService;

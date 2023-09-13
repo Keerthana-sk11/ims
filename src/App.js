@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Registration from './components/Registration';
 import Login from './components/Login';
+import Product from './components/Product';
 
 /*
 	React Router is a standard library for routing in React. 
@@ -55,6 +56,8 @@ function App() {
           <Routes>
               <Route path='/register' element={<Registration/>}/>
               <Route path='/login' element={<Login/>}/>
+
+              <Route path='/product' element={<Product/>}/>
           </Routes>
         </Router>
         </div>
