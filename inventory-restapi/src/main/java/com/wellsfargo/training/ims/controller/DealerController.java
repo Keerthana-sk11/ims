@@ -18,6 +18,11 @@ import com.wellsfargo.training.ims.exception.ResouceNotFoundException;
 /*
  * Controller for registration and login process of a dealer
  */
+
+/* Spring MVC provides @CrossOrigin annotation that marks the annotated method or type as permitting cross-origin requests.
+The CORS (Cross-Origin Resource Sharing) allows a webpage to request additional resources into the browser from other domains
+such as API data using AJAX, font files, style sheets etc. */
+
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
 @RequestMapping(value="/api")
