@@ -8,58 +8,52 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 
 /*
- * Model class for managing Product Objects - CRUD
+ * Model class for managing Product Objects
+ * The @Entity annotation specifies that the class is an entity and is mapped to a database table.
  */
 
-/* The @Entity annotation specifies that the class is an entity and is mapped to a database table.*/
 @Entity
 public class Product {
 	
-	/* @Id annotation specifies the primary key of an entity
-	 * @GeneratedValue provides for the specification of generation strategies for the values of primary keys.
-	 * If only strategy = GenerationType.IDENTITY, it means auto numbering and Id starts from 1.
-	 * Giving a seq gen helps to custom change Id range  */
-	
-	
-	@SequenceGenerator(name="product_seq",initialValue=1000,allocationSize=1)
+	/* The @Id annotation specifies the primary key of an entity and the @GeneratedValue provides for 
+	 * the specification of generation strategies for the values of primary keys. */
+
+	@SequenceGenerator(name="product_seq", initialValue = 1000, allocationSize = 1)
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY,generator="product_seq")
-	private long pid;
+	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "product_seq")
+	private Long pid;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private String brand;
 	
-	@Column(nullable=false)
-	private String madein;
+	@Column(nullable = false)
+	private String madeIn;
 	
-	@Column(nullable=false)
+	@Column(nullable = false)
 	private float price;
 	
-	
-	//Default constructor - generate constructor from super class
 	public Product() {
 		super();
+		
 	}
 
-	//Parameterized constructor - generate constructor using fields
-	public Product(long pid, String name, String brand, String madein, float price) {
+	public Product(Long pid, String name, String brand, String madeIn, float price) {
 		super();
 		this.pid = pid;
 		this.name = name;
 		this.brand = brand;
-		this.madein = madein;
+		this.madeIn = madeIn;
 		this.price = price;
 	}
 
-	//Generate getters and setters for all fields
-	public long getPid() {
+	public Long getPid() {
 		return pid;
 	}
 
-	public void setPid(long pid) {
+	public void setPid(Long pid) {
 		this.pid = pid;
 	}
 
@@ -79,12 +73,12 @@ public class Product {
 		this.brand = brand;
 	}
 
-	public String getMadein() {
-		return madein;
+	public String getMadeIn() {
+		return madeIn;
 	}
 
-	public void setMadein(String madein) {
-		this.madein = madein;
+	public void setMadeIn(String madeIn) {
+		this.madeIn = madeIn;
 	}
 
 	public float getPrice() {
@@ -96,9 +90,4 @@ public class Product {
 	}
 	
 	
-	
-	
-	
-	
-
 }

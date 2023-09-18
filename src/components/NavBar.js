@@ -1,31 +1,42 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-
-import '../styles/NavBar.css';
+import '../styles/NavBar.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 
-/* In HTML we use Hyperlink for Navigation - <a href="">
-In ReactJS we use Router for Navigation */
+/* In HTMLO we use hyperlink for Navigation - <a href= "">
+In ReactJS we use Route for Navigation
+*/
 
-const NavBar = () => {
+// Arrow functional component
 
+const NavBar=() => {
     return(
         <nav className="navbar">
             <ul className="nav-list">
+                <li className="nav-item">
+                    <Link to="/product" className="nav-link">
+                        <span><FontAwesomeIcon icon="bomb"></FontAwesomeIcon></span>&nbsp;
+                        Products</Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/dealers" className="nav-link">
+                        <span><FontAwesomeIcon icon="people-group"></FontAwesomeIcon></span>&nbsp;
+                        Dealers Info</Link>
+                </li>
                 <li className="nav-item">
                     <Link to="/register" className="nav-link">
                         <span><FontAwesomeIcon icon="camera-retro"></FontAwesomeIcon></span>&nbsp;
                         Register</Link>
                 </li>
-
                 <li className="nav-item">
                     <Link to="/login" className="nav-link">
                         <span><FontAwesomeIcon icon="sign-in"></FontAwesomeIcon></span>&nbsp;
-                        Login</Link>
+                        Log In</Link>
                 </li>
-
                 <li className="nav-item">
-                    <Link to="/about" className="nav-link">About Us</Link>
+                    <Link to="/about" className="nav-link">
+                        <span><FontAwesomeIcon icon="coffee"></FontAwesomeIcon></span>&nbsp;
+                        About Us</Link>
                 </li>
             </ul>
         </nav>

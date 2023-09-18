@@ -37,11 +37,11 @@
   }
 }
 
-.footer{
+.footer {
   background-color: black;
-  color: yellowgreen;
+  color: lightgray;
   text-align: center;
-  height: 8vh;
+  height: 10vh;
   font-weight: bold;
-  border-top: 2px solid yellow;
+  border-top: 2px solid gray;
 }

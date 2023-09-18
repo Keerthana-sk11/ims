@@ -1,22 +1,26 @@
 package com.wellsfargo.training.ims.model;
 
 import java.nio.charset.StandardCharsets;
+import java.sql.Date;
 import java.util.Base64;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.*;
 
+/*
+ * Model class for Registration of Users
+ */
+
 @Entity
 @Table(name="dealers")
 public class Dealer {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="did")
 	private Long id;
-
+	
 	@Column(unique=true)
 	private String email;
 	
@@ -25,7 +29,7 @@ public class Dealer {
 	
 	@Column(name="last_name")
 	private String lname;
-
+	
 	private String password;
 	
 	@JsonFormat(pattern="yyyy-MM-dd")
@@ -33,10 +37,6 @@ public class Dealer {
 	
 	@Column(name="phone", unique=true)
 	private String phoneNo;
-
-   /*
-    * Model 1-1 Mapping between Dealer and Address Objects
-    */
 	
 	@OneToOne(mappedBy="dealer", cascade=CascadeType.ALL)
 	private Address address;
@@ -44,21 +44,6 @@ public class Dealer {
 	public Dealer() {
 		super();
 	}
-	
-	
-
-	public Dealer(Long id, String email, String fname, String lname, String password, Date dob, String phoneNo) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.fname = fname;
-		this.lname = lname;
-		this.password = password;
-		this.dob = dob;
-		this.phoneNo = phoneNo;
-	}
-
-
 
 	public Dealer(Long id, String email, String fname, String lname, String password, Date dob, String phoneNo,
 			Address address) {

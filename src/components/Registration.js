@@ -1,14 +1,13 @@
-import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, {useState} from 'react'
+import '../styles/Register.css'
+import { useNavigate } from 'react-router-dom'
 
-import "../styles/Register.css";
-import AuthenticationService from '../service/AuthenticationService';
+import AuthenticationService from '../service/AuthenticationService'
 
 const Registration = () => {
-    const history=useNavigate(); //React Hook for Navigation b/w components;
-
-     //defining state for dealer object
-     const [dealer, setDealer] = useState({
+    const history = useNavigate();
+     //defining state
+  const [dealer, setDealer] = useState({
     email: '',
     fname: '',
     lname: '',
@@ -22,14 +21,10 @@ const Registration = () => {
     }
   });
 
-     const [errors,setErrors] = useState('');
-     const [successMessage,setSuccessMessage] = useState('');
-
-     /*
-The JavaScript spread operator (...) allows us to quickly copy all or 
-part of an existing array or object into another array or object.
-*/
-//Updates the state of a dealer Object when user enters data in the input fields
+  const [errors,setErrors] = useState('');
+    const [successMessage,setSuccessMessage] = useState('');
+    
+  //Updates the state of a dealer Object when user enters data in the input fields
   const handleChange = (e) => {
     const { name, value } = e.target;
     if (name.includes('.')) {   
@@ -49,87 +44,86 @@ part of an existing array or object into another array or object.
     }
   };
 
-  //method to Register Dealer
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const validationErrors = validateForm();
-    if (Object.keys(validationErrors).length === 0) {
-      try {
-        await AuthenticationService.registerDealer(dealer);
-        setSuccessMessage('Registration successful!');
-        alert("Registration Successfull");
-        setTimeout(() => {
-          history('/login'); // navigates to Login Component
-        }, 3000);
-      
-      } 
-      
-      catch (error) {
-        console.error('Registration error', error);
-        setSuccessMessage('An error occurred during registration.');
-      }
-    } else {
-      setErrors(validationErrors);
-    }
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length === 0) {
+          try {
+            await AuthenticationService.registerDealer(dealer);
+            setSuccessMessage('Registration successful!');
+            alert("Registration Successfull");
+            setTimeout(() => {
+              history('/login'); // navigates to Login Component
+            }, 3000);
+          
+          } 
+          
+          catch (error) {
+            console.error('Registration error', error);
+            setSuccessMessage('An error occurred during registration.');
+          }
+        } else {
+          setErrors(validationErrors);
+        }
+      };
 
-  const validateForm = () => {
-    let validationErrors = {};
+      // Method to validate form fields
 
-    if (!dealer.email) {
-      validationErrors.email = 'Email is required.';
-    }
-    if (!dealer.fname) {
-      validationErrors.fname = 'First name is required.';
-    }
-      else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
-        validationErrors.fname = 'Enter Alphabets Only';
-      }
-
-    if (!dealer.lname) {
-      validationErrors.lname = 'Last name is required.';
-    }
-
-    if (!dealer.password) {
-      validationErrors.password = 'Password is required.';
-    } else if (dealer.password.length < 6) {
-      validationErrors.password = 'Password must be at least 6 characters.';
-    }
-
-     if (!dealer.dob) {
-      validationErrors.dob = 'Date of Birth is required.';
-    } 
-
-    if (!dealer.phoneNo) {
-      validationErrors.phoneNo = 'Phone number is required.';
-    } else if (!/^\d{10}$/.test(dealer.phoneNo)) {
-      validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
-    }
+      const validateForm = () => {
+        let validationErrors = {};
     
-    if (!dealer.address.street) {
-      validationErrors['address.street'] = 'Street is required.';
-    }
-
-    if (!dealer.address.city) {
-      validationErrors['address.city'] = 'City is required.';
-    }
-
-    if (!dealer.address.pincode) {
-      validationErrors['address.pincode'] = 'Pin Code is required.';
-    }
-
-    return validationErrors;
-  };
-  
+        if (!dealer.email) {
+          validationErrors.email = 'Email is required.';
+        }
+        if (!dealer.fname) {
+          validationErrors.fname = 'First name is required.';
+        }
+          else if (!/^[a-zA-Z]*$/.test(dealer.fname)) {
+            validationErrors.fname = 'Enter Alphabets Only';
+          }
+    
+        if (!dealer.lname) {
+          validationErrors.lname = 'Last name is required.';
+        }
+    
+        if (!dealer.password) {
+          validationErrors.password = 'Password is required.';
+        } else if (dealer.password.length < 6) {
+          validationErrors.password = 'Password must be at least 6 characters.';
+        }
+    
+         if (!dealer.dob) {
+          validationErrors.dob = 'Date of Birth is required.';
+        } 
+    
+        if (!dealer.phoneNo) {
+          validationErrors.phoneNo = 'Phone number is required.';
+        } else if (!/^\d{10}$/.test(dealer.phoneNo)) {
+          validationErrors.phoneNo = 'Invalid phone number. Please enter a 10-digit number.';
+        }
+        
+        if (!dealer.address.street) {
+          validationErrors['address.street'] = 'Street is required.';
+        }
+    
+        if (!dealer.address.city) {
+          validationErrors['address.city'] = 'City is required.';
+        }
+    
+        if (!dealer.address.pincode) {
+          validationErrors['address.pincode'] = 'Pin Code is required.';
+        }
+    
+        return validationErrors;
+      };
 
   return (
-    <div> <br/>
-    <div className='registration-container'>
-        <h2 style={{color:'blue'}}>Dealer Registration</h2>
-        {successMessage && <p className='success-message'>{successMessage}</p>}</div>
-
-        <form onSubmit={handleSubmit}>
-        <div className="form-group">
+    <div> <br></br>
+        <div className='registration-container'>
+            <h2 style={{color:'yellow'}}>Dealer Registration</h2>
+            {successMessage && <p className='success-message'>{successMessage}</p>}
+            <form onSubmit={handleSubmit}>
+            <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
@@ -241,7 +235,8 @@ part of an existing array or object into another array or object.
             Register
           </button>
         </div>
-        </form>
+            </form>
+        </div>
     </div>
   )
 }
