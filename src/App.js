@@ -25,12 +25,13 @@ import ViewProduct from './components/ViewProduct';
 */
 
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch} from '@fortawesome/free-solid-svg-icons';
+import {faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch, faSignOut} from '@fortawesome/free-solid-svg-icons';
 import CreateProduct from './components/CreateProduct';
 import DealersInfo from './components/DealersInfo';
 import ProductSearch from './components/ProductSearch';
 import About from './components/About';
-library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch);
+import Logout from './components/Logout';
+library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch, faSignOut);
 function App() {
   return (
     <div className="App">
@@ -54,6 +55,7 @@ function App() {
             <Route path='/product' element={<Product/>} />
             <Route path='/dealers' element={<DealersInfo/>} />
             <Route path='/search' element={<ProductSearch/>} />
+            <Route path='/logout' element={<Logout/>} />
 
             <Route path='/addProduct/:id' element={<CreateProduct />} />
             <Route path='/viewProduct/:id' element={<ViewProduct />} />
