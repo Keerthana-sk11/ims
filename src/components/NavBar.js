@@ -19,6 +19,11 @@ const NavBar=() => {
                         Products</Link>
                 </li>
                 <li className="nav-item">
+                    <Link to="/search" className="nav-link">
+                        <span><FontAwesomeIcon icon="search"></FontAwesomeIcon></span>&nbsp;
+                        Search</Link>
+                </li>
+                <li className="nav-item">
                     <Link to="/dealers" className="nav-link">
                         <span><FontAwesomeIcon icon="people-group"></FontAwesomeIcon></span>&nbsp;
                         Dealers Info</Link>

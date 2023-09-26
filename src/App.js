@@ -25,10 +25,12 @@ import ViewProduct from './components/ViewProduct';
 */
 
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup} from '@fortawesome/free-solid-svg-icons';
+import {faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch} from '@fortawesome/free-solid-svg-icons';
 import CreateProduct from './components/CreateProduct';
 import DealersInfo from './components/DealersInfo';
-library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup);
+import ProductSearch from './components/ProductSearch';
+import About from './components/About';
+library.add(faSignIn, faCameraRetro, faCoffee, faBomb, faTrash, faEdit, faList, faPeopleGroup, faSearch);
 function App() {
   return (
     <div className="App">
@@ -39,7 +41,7 @@ function App() {
 
       <section>
         <div style={{
-          backgroundImage: "url(/images/ims-bg.jpg)", backgroundSize: 'cover', backgroundRepeat: 'no-repeat', minHeight: '100vh', minWidth: '100vw'
+          backgroundImage: "url(/images/ims-bg.jpg)", backgroundSize: 'cover', backgroundRepeat: 'no-repeat', minHeight: '100vh', minWidth: '90vw'
         }}>
         <Router>
           <NavBar />
@@ -47,9 +49,11 @@ function App() {
           <Routes>
             <Route path='/register' element={<Registration/>} />
             <Route path='/login' element={<Login/>} />
+            <Route path='/about' element={<About/>} />
 
             <Route path='/product' element={<Product/>} />
             <Route path='/dealers' element={<DealersInfo/>} />
+            <Route path='/search' element={<ProductSearch/>} />
 
             <Route path='/addProduct/:id' element={<CreateProduct />} />
             <Route path='/viewProduct/:id' element={<ViewProduct />} />

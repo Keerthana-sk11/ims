@@ -26,7 +26,7 @@ class AuthenticationService {
             else { return false; }
         }
         catch(error) {
-            console.error('Login EError : ', error);
+            console.error('Login Error : ', error);
         }
     }
     
